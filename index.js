@@ -332,9 +332,9 @@ class NanoConnection {
                         this.sendMessage(0x04,vREQ.packet,vREQ.extensions)
                         this.sendMessage(0x0c,Buffer.from([]),0)
                     },1000)
-                    /*setInterval(() => {
+                    setInterval(() => {
                         this.keepalive()
-                    }, 1000)*/
+                    }, 1000)
                 }
                 if (responseData) {
                     this.sendMessage(
@@ -346,7 +346,6 @@ class NanoConnection {
                 break;
             }
             case "KeepAlive": {
-                this.keepalive()
                 const peers = Math.floor(data.length/18)
                 for (var i = 0; i < peers; i++) {
                     const peerPtr = i*18
